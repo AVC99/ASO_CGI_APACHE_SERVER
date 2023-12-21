@@ -1,10 +1,8 @@
 #!/bin/bash
 
 # Establecer valores de usuario y contraseña (reemplázalos con los valores correctos)
-usuario_valido="lfss"
-contrasena_valida="lfss"
-
-shadow=$(sudo cat /etc/shadow)
+usuario_valido="lfs"
+contrasena_valida="lfs"
 
 # Obtener valores del formulario
 read query_string
@@ -13,18 +11,24 @@ read query_string
 username=$(echo "$query_string" | awk -F'&' '{split($1,a,"="); print a[2]}')
 password=$(echo "$query_string" | awk -F'&' '{split($1,a,"="); print a[2]}')
 
+user_line=$(sudo cat /etc/shadow | grep $username)
+
+salt=$(echo "$user_line" | awk -F'$' '{print $3}')
+
+encrypted_password=$(openssl passwd -6 -salt $salt $password)
+
 
 
 # Verificar las credenciales
 if [ "$username" == "$usuario_valido" ] && [ "$password" == "$contrasena_valida" ]; then
    
-    whoami=$(whoami)
     echo "Content-type: text/html"
     echo ""
     echo "<html><body><h1>Login exitoso</h1>
-    <h2>username:  $username /password:  $password </h2>   
-    <p> $shadow </p> 
-    <p> $whoami </p>
+    <h2>username:  $username /password:  $password </h2> 
+    <p> $salt </p>
+    <p> $user_line </p>
+    <p> ENCRYPTED:  $encrypted_password </p>
     </body></html>"
 else
     echo "Status: 302 Found"
@@ -32,13 +36,3 @@ else
     echo ""
 
 fi
-
-
-# Obtener información del usuario desde /etc/passwd
-user_info=$(getent passwd "$username")
-
-# Extraer el hash del password del campo de contraseña en /etc/shadow
-password_hash=$(echo "$user_info" | cut -d: -f2)
-
-# Hash del password proporcionado
-provided_password_hash=$(echo -n "$password" | mkpasswd -s "$password_hash")
