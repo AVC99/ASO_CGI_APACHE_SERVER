@@ -14,8 +14,8 @@ who=$(whoami)
 echo '<header>'  
 echo "<div class='welcome'> Welcome $who </div>"
 echo '<div class="buttons">'
-echo '<button class="shutdown" type="button" onclick="window.location.href='../scripts/shutdown.cgi'">Sutdown</button>'
 echo '<button class="restart" type="button" onclick="window.location.href='../scripts/restart.cgi'">Restart</button>'
+echo '<button class="shutdown" type="button" onclick="window.location.href='../scripts/shutdown.cgi'">Sutdown</button>'
 echo '</div>'
 echo '</header>'
 echo '<section>'

@@ -16,6 +16,7 @@ header {
   z-index: 1000;
   background-color: #222;
   font-size: 2em;
+  font-weight: 500;
   color: #0f0;
   text-transform: uppercase;
 }
@@ -33,12 +34,20 @@ header {
 
 .shutdown{
   padding: 10px;
-  margin-right: 20px;
   cursor: pointer;
-  border-radius: 12%;
+  border-radius: 4px;
   background: #ff0000;
+  border: none;
+  margin-left: 10px;
 }
 
+.restart{
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #cdf007;
+  border: none;
+}
 
 body {
   display: flex;
@@ -182,6 +191,7 @@ section .signin .content .form .inputBox i {
 input[type="submit"]:active {
   opacity: 0.6;
 }
+
 @media (max-width: 900px) {
   section span {
     width: calc(10vw - 2px);
