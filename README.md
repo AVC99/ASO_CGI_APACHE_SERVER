@@ -10,7 +10,7 @@ We installed some additional packages following https://www.linuxfromscratch.org
   - Which 2.21
 
 ## Functionalities :
- - [] LOGIN
+ - [X] LOGIN
  - [] PROCESS MANAGEMENT
  - [] MONITORING
  - [] SHUTDOWN AND RESTART

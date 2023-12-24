@@ -10,6 +10,7 @@ salt=$(echo "$user_line" | awk -F'$' '{print $3}')
 encrypted_password=$(openssl passwd -6 -salt $salt $password)
 # Verificar las credenciales
 if [ "$username" == "$shadow_user" ] && [ "$encrypted_password" == "$hashed_password" ]; then
+    # TODO: Create persitent file 
     echo "Status: 302 Found"
     echo "Location: ./home.cgi"
     echo ""
