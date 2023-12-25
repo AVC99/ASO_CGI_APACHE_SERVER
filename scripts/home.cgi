@@ -14,6 +14,8 @@ who=$(whoami)
 echo '<header>'  
 echo "<div class='welcome'> Welcome $who </div>"
 echo '<div class="buttons">'
+# IDK if i can use javascript to call the scripts or not 
+# MAYBE I SHOULD USE POST OR GET TO CALL THE SCRIPTS
 echo '<button class="restart" type="button" onclick="window.location.href='../scripts/restart.cgi'">Restart</button>'
 echo '<button class="shutdown" type="button" onclick="window.location.href='../scripts/shutdown.cgi'">Sutdown</button>'
 echo '</div>'
@@ -24,6 +26,7 @@ $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
 echo '<div class="signin">'
 echo '<div class="content">'
+# MAKE A GRID OF SHIT TO DO and we good 
 echo '<h2>HOME</h2>'
 echo '<h3>ASO Server</h3>'
 echo '</div>'

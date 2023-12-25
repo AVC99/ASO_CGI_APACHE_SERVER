@@ -13,7 +13,7 @@ We installed some additional packages following https://www.linuxfromscratch.org
  - [X] LOGIN
  - [] PROCESS MANAGEMENT
  - [] MONITORING
- - [] SHUTDOWN AND RESTART
+ - [X] SHUTDOWN AND RESTART
  - [] USER MANAGEMENT
  - [] PACKET FILTERING
  - [] CRON MANAGEMENT
