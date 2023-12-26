@@ -11,7 +11,9 @@ encrypted_password=$(openssl passwd -6 -salt $salt $password)
 # Verificar las credenciales
 if [ "$username" == "$shadow_user" ] && [ "$encrypted_password" == "$hashed_password" ]; then
     # TODO: Create persitent file 
-    
+    echo $username > ../cache/user.txt
+    echo $(groups $username) >> ../cache/user.txt
+    echo "$(date): User $username logged in." >> login.log
     echo "Status: 302 Found"
     echo "Location: ./home.cgi"
     echo ""
