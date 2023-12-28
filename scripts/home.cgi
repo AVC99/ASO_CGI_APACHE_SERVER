@@ -7,6 +7,7 @@ echo '<head>'
 echo '<meta charset="UTF-8"/>'
 echo '<title>ASO Server Home</title>'
 echo '<link rel="stylesheet" href="../css/home.css"/>'
+echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
 echo '</head>'
 echo '<body>'
 
@@ -14,8 +15,6 @@ who=$(head -n 1 user.log)
 echo '<header>'  
 echo "<div class='welcome'> Welcome $who </div>"
 echo '<div class="buttons">'
-# IDK if i can use javascript to call the scripts or not 
-# MAYBE I SHOULD USE POST OR GET TO CALL THE SCRIPTS
 echo '<form action="./restart.sh" method="post"><button class="restart" type="submit">Restart</button></form>'
 echo '<form action="./shutdown.sh" method="post"><button class="shutdown" type="submit">Sutdown</button></form>'
 echo '</div>'
@@ -24,41 +23,62 @@ echo '<section>'
 cat << EOF
 $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
-echo '<div class="menu">'
-# Process handling
-echo '  <div class="menu_item">'
-echo '    <p>Process handling</p>'
-echo '    <button>See</button>'
-echo '  </div>'
-# Monitoring 
-echo '  <div class="menu_item">'
+
+echo '<div class="wrapper">'
+# Monitoring ----------------------------------------------------------------------- 
+cpu_usage=$(top -bn1 | awk '/%Cpu/ {print $1, $3, $6, $8}' |  sed 's/%//g')
+last_ten_users=$(cat login.log | tail -n 10)
+ram=$(free -m | awk '/Mem/ {print $3,"/" $2}')
+disc=$(df -h | awk '{print $0"<br>"}')
+
+echo '  <div class="monitoring">'
 echo '    <p>Monitoring</p>'
-echo '    <button>See</button>'
+echo '    <div class="monitoring_wrapper">'
+echo '       <div class="monitoring_item_wrapper">'
+echo '          <div class="monitoring_item">'
+echo "                  Overall CPU Usage $cpu_usage"
+echo '          </div>'
+echo "          <div class="monitoring_item">RAM: $ram Gb </div>"
+echo -e "          <div class='monitoring_item'>$disc</div>"
+echo '          <div class="monitoring_item">Last 10 Users:</div>'
+while IFS= read -r line; do
+  printf '          <div class="monitoring_user_item">%s</div>\n' "$line"
+done <<< "$last_ten_users"
+echo '       </div>'
+echo '    </div>'
 echo '  </div>'
+# Menu ------------------------------------------------------------------------------
+echo '  <div class="menu">'
+# Process handling
+echo '    <div class="menu_item">'
+echo '     <p>Process handling</p>'
+echo '     <button>See</button>'
+echo '    </div>'
 # Logs 
-echo '  <div class="menu_item">'
-echo '    <p>Logs</p>'
-echo '    <button>See</button>'
-echo '  </div>'
+echo '    <div class="menu_item">'
+echo '     <p>Logs</p>'
+echo '     <button>See</button>'
+echo '    </div>'
 # Users
-echo '  <div class="menu_item">'
-echo '    <p>Users management</p>'
-echo '    <button>See</button>'
-echo '  </div>'
+echo '    <div class="menu_item">'
+echo '      <p>Users management</p>'
+echo '     <button>See</button>'
+echo '    </div>'
 # Packet filtering
-echo '  <div class="menu_item">'
-echo '    <p>Packet filtering</p>'
-echo '    <button>See</button>'
-echo '  </div>'
+echo '    <div class="menu_item">'
+echo '      <p>Packet filtering</p>'
+echo '      <button>See</button>'
+echo '    </div>'
 # Cron
-echo '  <div class="menu_item">'
-echo '    <p>Cron management</p>'
-echo '    <button>See</button>'
-echo '  </div>'
+echo '    <div class="menu_item">'
+echo '      <p>Cron management</p>'
+echo '      <button>See</button>'
+echo '    </div>'
 # Music
-echo '  <div class="menu_item">'
-echo '    <p>Music</p>'
-echo '    <button>See</button>'
+echo '    <div class="menu_item">'
+echo '      <p>Music</p>'
+echo '      <button>See</button>'
+echo '    </div>'
 echo '  </div>'
 echo '</div>'
 echo '</body>'

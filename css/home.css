@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +12,7 @@ header {
   display: flex;
   flex-direction: row;
   padding: 10px;
+ 
   width: 100%;
   top: 0;
   z-index: 1000;
@@ -30,6 +32,7 @@ header {
   margin-left: 20px;
   display: flex;
   justify-content: flex-end;
+  margin-right: 20px;
 }
 
 .shutdown{
@@ -62,7 +65,9 @@ body {
   align-items: center;
   min-height: 100vh;
   background: #000;
+  overflow:auto;
 }
+
 section {
   position: absolute;
   width: 100vw;
@@ -72,13 +77,57 @@ section {
   align-items: center;
   gap: 2px;
   flex-wrap: wrap;
+  /*Si cambiamos el oveflow vuelve el fondo scrolleable*/
   overflow: hidden;
 }
-.menu {
-  position: absolute;
-  margin: auto;
+.wrapper{
+  position: absolute; 
   top: 10%;
   width: 90%;
+  padding: 20px;
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  overflow: auto;
+  max-height: 80%;
+}
+.monitoring{
+  padding: 20px;
+  left: 0;
+  width: 96%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background-color: #222;
+  border-radius: 4px;
+  box-shadow: #000 0px 0px 10px;
+  color: #0f0;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+.monitoring_item_wrapper{
+  display: flex; 
+  flex-direction: column;
+  padding: 5px;
+}
+.monitoring_item{
+  padding: 5px;
+}
+.monitoring_user_item{
+  padding: 5px;
+  font-size: 1pc ;
+}
+
+.menu {
+  margin: auto;
+  top: 0;
+  width: 100%;
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -101,6 +150,7 @@ section {
   margin-left: 10px;
   box-shadow: #000 0px 0px 10px;
 }
+
 .menu_item p {
   font-size: 1.5em;
   font-weight: 500;

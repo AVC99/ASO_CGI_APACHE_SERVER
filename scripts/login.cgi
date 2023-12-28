@@ -10,10 +10,9 @@ salt=$(echo "$user_line" | awk -F'$' '{print $3}')
 encrypted_password=$(openssl passwd -6 -salt $salt $password)
 # Verificar las credenciales
 if [ "$username" == "$shadow_user" ] && [ "$encrypted_password" == "$hashed_password" ]; then
-    # TODO: Create persitent file 
     echo $username > user.log
     echo $(groups $username) >> user.log
-    echo "$(date): User $username logged in." >> login.log
+    echo -e "$(date): User $username logged in.vi" >> login.log
     echo "Status: 302 Found"
     echo "Location: ./home.cgi"
     echo ""
