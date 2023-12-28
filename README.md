@@ -17,4 +17,4 @@ We installed some additional packages following https://www.linuxfromscratch.org
  - [] USER MANAGEMENT
  - [] PACKET FILTERING
  - [] CRON MANAGEMENT
- - []  AUTOMOUNT AND MUSIC SEARCH
+ - [] AUTOMOUNT AND MUSIC SEARCH
