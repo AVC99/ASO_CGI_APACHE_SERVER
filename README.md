@@ -15,9 +15,10 @@ We installed some additional packages following https://www.linuxfromscratch.org
 
 ## Functionalities :
  - [X] LOGIN
- - [] PROCESS MANAGEMENT
+ - [X] PROCESS MANAGEMENT
  - [X] MONITORING
  - [X] SHUTDOWN AND RESTART
+ - [X] LOGS
  - [] USER MANAGEMENT
  - [] PACKET FILTERING
  - [] CRON MANAGEMENT

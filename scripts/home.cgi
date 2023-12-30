@@ -53,7 +53,7 @@ echo '  <div class="menu">'
 # Process handling
 echo '    <div class="menu_item">'
 echo '     <p>Process handling</p>'
-echo '     <button>See</button>'
+echo '    <form action="./process_management.cgi" method="post"><button class="See" type="submit">See</button></form>'
 echo '    </div>'
 # Logs 
 echo '    <div class="menu_item">'
