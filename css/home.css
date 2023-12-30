@@ -115,6 +115,9 @@ section {
   display: flex;
   flex-direction: column;
   padding: 5px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .monitoring_item {
   padding: 5px;
@@ -122,6 +125,7 @@ section {
 .monitoring_user_item {
   padding: 5px;
   font-size: 1pc;
+  font-weight: 400;
 }
 
 .menu {
