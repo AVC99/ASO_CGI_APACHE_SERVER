@@ -19,7 +19,7 @@ We installed some additional packages following https://www.linuxfromscratch.org
  - [X] MONITORING
  - [X] SHUTDOWN AND RESTART
  - [X] LOGS
- - [] USER MANAGEMENT
+ - [X] USER MANAGEMENT
  - [] PACKET FILTERING
  - [] CRON MANAGEMENT
  - [] AUTOMOUNT AND MUSIC SEARCH

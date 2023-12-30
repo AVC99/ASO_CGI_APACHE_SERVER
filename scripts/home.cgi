@@ -63,7 +63,7 @@ echo '    </div>'
 # Users
 echo '    <div class="menu_item">'
 echo '      <p>Users management</p>'
-echo '     <button>See</button>'
+echo '     <form action="./user_management.cgi" method="post"><button class="See" type="submit">See</button></form>'
 echo '    </div>'
 # Packet filtering
 echo '    <div class="menu_item">'
