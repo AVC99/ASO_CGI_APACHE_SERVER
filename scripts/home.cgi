@@ -8,11 +8,12 @@ echo '<meta charset="UTF-8"/>'
 echo '<title>ASO Server Home</title>'
 echo '<link rel="stylesheet" href="../css/home.css"/>'
 echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
+echo '<link rel="icon" href="../icons/Hasbulla.png" type="image/png">'
 echo '</head>'
 echo '<body>'
 
 who=$(head -n 1 user.log)
-echo '<header>'  
+echo '<header>'
 echo "<div class='welcome'> Welcome $who </div>"
 echo '<div class="buttons">'
 echo '<form action="./restart.sh" method="post"><button class="restart" type="submit">Restart</button></form>'
@@ -23,7 +24,7 @@ echo '<section>'
 cat << EOF
 $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
-
+echo "</section>"
 echo '<div class="wrapper">'
 # Monitoring ----------------------------------------------------------------------- 
 cpu_usage=$(top -bn1 | awk '/%Cpu/ {print $1, $3, $6, $8}' |  sed 's/%//g')
@@ -57,7 +58,7 @@ echo '    </div>'
 # Logs 
 echo '    <div class="menu_item">'
 echo '     <p>Logs</p>'
-echo '     <button>See</button>'
+echo '    <form action="./logs.cgi" method="post"><button class="See" type="submit">See</button></form>'
 echo '    </div>'
 # Users
 echo '    <div class="menu_item">'

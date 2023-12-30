@@ -12,7 +12,7 @@ header {
   display: flex;
   flex-direction: row;
   padding: 10px;
- 
+  justify-content: space-between;
   width: 100%;
   top: 0;
   z-index: 1000;
@@ -23,19 +23,19 @@ header {
   text-transform: uppercase;
 }
 
-.welcome{
+.welcome {
   flex: 1;
   text-align: center;
 }
 
-.buttons{
+.buttons {
   margin-left: 20px;
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
 }
 
-.shutdown{
+.shutdown {
   padding: 10px;
   cursor: pointer;
   border-radius: 4px;
@@ -44,20 +44,21 @@ header {
   margin-left: 10px;
 }
 
-.restart{
+.restart {
   padding: 10px;
   cursor: pointer;
   border-radius: 4px;
   background: #fef208;
   border: none;
 }
-.shutdown:hover{
+.shutdown:hover {
   background-color: #d31c1c;
 }
 
-.restart:hover{
+.restart:hover {
   background-color: #a39c1a;
 }
+
 
 body {
   display: flex;
@@ -65,7 +66,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background: #000;
-  overflow:auto;
+  overflow: auto;
 }
 
 section {
@@ -80,12 +81,12 @@ section {
   /*Si cambiamos el oveflow vuelve el fondo scrolleable*/
   overflow: hidden;
 }
-.wrapper{
-  position: absolute; 
+.wrapper {
+  position: absolute;
   top: 10%;
   width: 90%;
   padding: 20px;
-  display : flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -93,14 +94,13 @@ section {
   overflow: auto;
   max-height: 80%;
 }
-.monitoring{
+.monitoring {
   padding: 20px;
   left: 0;
   width: 96%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  grid-gap: 20px;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
@@ -111,17 +111,17 @@ section {
   font-size: 1.5em;
   font-weight: 500;
 }
-.monitoring_item_wrapper{
-  display: flex; 
+.monitoring_item_wrapper {
+  display: flex;
   flex-direction: column;
   padding: 5px;
 }
-.monitoring_item{
+.monitoring_item {
   padding: 5px;
 }
-.monitoring_user_item{
+.monitoring_user_item {
   padding: 5px;
-  font-size: 1pc ;
+  font-size: 1pc;
 }
 
 .menu {
@@ -136,7 +136,7 @@ section {
   align-items: center;
   z-index: 100;
 }
-.menu_item{
+.menu_item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -167,6 +167,9 @@ button {
   width: 100%;
 }
 
+form {
+  width: 100%;
+}
 button:hover {
   box-shadow: #000 0px 0px 10px;
   background-color: rgb(27, 196, 27);
