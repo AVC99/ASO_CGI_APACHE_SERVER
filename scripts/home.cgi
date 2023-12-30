@@ -68,7 +68,7 @@ echo '    </div>'
 # Packet filtering
 echo '    <div class="menu_item">'
 echo '      <p>Packet filtering</p>'
-echo '      <button>See</button>'
+echo '       <form action="./packet_filtering.cgi" method="post"><button>See</button></form>'
 echo '    </div>'
 # Cron
 echo '    <div class="menu_item">'
