@@ -73,7 +73,7 @@ echo '    </div>'
 # Cron
 echo '    <div class="menu_item">'
 echo '      <p>Cron management</p>'
-echo '      <button>See</button>'
+echo '        <form action="./cron_management.cgi" method="post"><button>See</button></form>'
 echo '    </div>'
 # Music
 echo '    <div class="menu_item">'

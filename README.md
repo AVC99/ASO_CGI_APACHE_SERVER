@@ -12,6 +12,8 @@ We installed some additional packages following https://www.linuxfromscratch.org
   - Boost 1.83.0
   - cURL 8.2.1
   - Sudo  1.9.14p3
+  - iptables 1.8.9
+  - Fcron 3.2.1 
 
 ## Functionalities :
  - [X] LOGIN
@@ -20,6 +22,6 @@ We installed some additional packages following https://www.linuxfromscratch.org
  - [X] SHUTDOWN AND RESTART
  - [X] LOGS
  - [X] USER MANAGEMENT
- - [] PACKET FILTERING
- - [] CRON MANAGEMENT
+ - [X] PACKET FILTERING
+ - [/] CRON MANAGEMENT
  - [] AUTOMOUNT AND MUSIC SEARCH
