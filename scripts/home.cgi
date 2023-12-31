@@ -2,6 +2,7 @@
 
 echo 'Content-type: text/html'
 echo ''
+echo '<!DOCTYPE html>'
 echo '<html>'
 echo '<head>'
 echo '<meta charset="UTF-8"/>'

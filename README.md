@@ -14,6 +14,9 @@ We installed some additional packages following https://www.linuxfromscratch.org
   - Sudo  1.9.14p3
   - iptables 1.8.9
   - Fcron 3.2.1 
+  - libtirpc 1.3.3 
+  - rpcsvc-proto 1.4.4
+  - autofs 5.1.8
 
 ## Functionalities :
  - [X] LOGIN
