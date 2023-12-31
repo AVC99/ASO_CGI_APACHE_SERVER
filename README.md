@@ -27,4 +27,4 @@ We installed some additional packages following https://www.linuxfromscratch.org
  - [X] USER MANAGEMENT
  - [X] PACKET FILTERING
  - [/] CRON MANAGEMENT
- - [] AUTOMOUNT AND MUSIC SEARCH
+ - [/] AUTOMOUNT AND MUSIC SEARCH (autofs installed but not configured (has not been tested yet))
