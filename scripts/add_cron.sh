@@ -1,7 +1,7 @@
 #!/bin/bash
 
 who=$(head -n 1 user.log)
-echo -e "User: $who has created a new cron rule" >> ./register.log
+logger -t "WEBASO" "User: $who has accessed cron management"
 
 
 read -r query_string

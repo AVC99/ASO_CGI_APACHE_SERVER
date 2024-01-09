@@ -7,7 +7,7 @@ pid=$(echo "$query_string" | awk -F'&' '{split($1,a,"="); print a[2]}')
 
 
 who=$(head -n 1 user.log)
-echo -e "User: $who has killed pid $pid " >> ./register.log
+logger -t "WEBASO" "User: $who has killed process: $pid"
 
 #KILLING THE PROCESS
 sudo kill -9 $pid

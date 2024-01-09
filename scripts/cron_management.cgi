@@ -1,7 +1,7 @@
 #!/bin/bash
 
 who=$(head -n 1 user.log)
-echo -e "User: $who has entered the cron_management page" >> ./register.log
+logger -t "WEBASO" "User: $who has accessed cron management"
 
 echo 'Content-type: text/html'
 echo ''

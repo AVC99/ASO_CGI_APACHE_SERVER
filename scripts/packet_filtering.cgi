@@ -1,7 +1,7 @@
 #!/bin/bash
 
 who=$(head -n 1 user.log)
-echo -e "User: $who has entered the packet filtering page" >> ./register.log
+logger -t "WEBASO" "User: $who has accessed packet filtering"
 
 echo 'Content-type: text/html'
 echo ''

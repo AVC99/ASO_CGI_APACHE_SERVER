@@ -1,7 +1,7 @@
 #!/bin/bash
 
 who=$(head -n 1 user.log)
-echo -e "User: $who has added a new rule" >> ./register.log
+logger -t "WEBASO" "User: $who has accessed packet filtering"
 
 read query_string
 

@@ -4,7 +4,7 @@ read query_string
 user=$(echo "$query_string" | awk -F'&' '{split($1,a,"="); print a[2]}')
 
 who=$(head -n 1 user.log)
-echo -e "User: $who has added: $user" >> ./register.log
+logger -t "WEBASO" "User: $who has added user: $user"
 
 sudo useradd "$user"
 

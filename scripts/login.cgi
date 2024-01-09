@@ -12,11 +12,12 @@ encrypted_password=$(openssl passwd -6 -salt $salt $password)
 if [ "$username" == "$shadow_user" ] && [ "$encrypted_password" == "$hashed_password" ]; then
     echo $username > user.log
     echo $(groups $username) >> user.log
-    echo -e "$(date): User $username logged in." >> login.log
+    logger -t "WEBASO" "User: $username has logged in"
     echo "Status: 302 Found"
     echo "Location: ./home.cgi"
     echo ""
 else
+    logger -t "WEBASO" "User: $username has failed to log in"
     echo "Status: 302 Found"
     echo "Location: ../failed_login.html"
     echo ""

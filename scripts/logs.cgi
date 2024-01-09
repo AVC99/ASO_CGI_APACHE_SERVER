@@ -1,7 +1,7 @@
 #!/bin/bash
 
 who=$(head -n 1 user.log)
-echo -e "User: $who has entered the logs page" >> ./register.log
+logger -t "WEBASO" "User: $who has accessed logs"
 
 echo 'Content-type: text/html'
 echo ''
@@ -24,7 +24,7 @@ $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
 echo "</section>"
 echo '<div class="wrapper">'
-user_log=$(cat ./register.log | awk '{print $0"<br>"}')
+user_log=$(awk '/WEBASO/' /var/log/sys.log)
 echo '    <div class="logs">'
 echo "    $user_log"
 echo "    </div>"

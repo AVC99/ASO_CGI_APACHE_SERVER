@@ -7,7 +7,7 @@ pid=$(echo "$query_string" | awk -F'&' '{split($1,a,"="); print a[2]}')
 seconds=$(echo "$query_string"| awk -F'&' '{split($2,a,"="); print a[2]}')
 
 who=$(head -n 1 user.log)
-echo -e "User: $who has interrupted pid $pid for $seconds seconds " >> ./register.log
+logger -t "WEBASO" "User: $who has interrupted process: $pid"
 
 #INTERRUPTING THE PROCESS
 sudo kill -STOP $pid
