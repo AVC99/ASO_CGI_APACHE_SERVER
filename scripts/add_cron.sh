@@ -13,6 +13,8 @@ month=$(echo "$query_string" | awk -F'&' '{split($4,a,"="); print a[2]}')
 day_of_week=$(echo "$query_string" | awk -F'&' '{split($5,a,"="); print a[2]}')
 command=$(echo "$query_string" | awk -F'&' '{split($6,a,"="); print a[2]}')
 
+command=$(echo "$command" | sed 's/+/ /g')
+
 
 echo 'Content-type: text/html'
 echo ''
@@ -34,9 +36,10 @@ cat << EOF
 $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
 echo "</section>"
-crontab=$(sudo fcrontab -l)
 fcron_command="$minute $hour $day_of_month $month $day_of_week $command"
-echo "$fcron_command" | fcrontab -u "$who" -
+(fcrontab -l; echo "$fcron_command") | fcrontab -
+
+crontab=$(fcrontab -l)
 
 echo '<div class="wrapper">'
 echo '  <div class="user_tool">'

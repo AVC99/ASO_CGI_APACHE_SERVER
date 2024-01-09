@@ -23,7 +23,7 @@ cat << EOF
 $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
 echo "</section>"
-crontab=$(sudo fcrontab -l)
+crontab=$(fcrontab -l)
 echo '<div class="wrapper">'
 echo '  <div class="user_tool">'
 echo '    <form action="./add_cron.sh" method="post">'
