@@ -15,6 +15,11 @@ command=$(echo "$query_string" | awk -F'&' '{split($6,a,"="); print a[2]}')
 
 command=$(echo "$command" | sed 's/+/ /g')
 
+fcron_command="$minute $hour $day_of_month $month $day_of_week $command"
+(fcrontab -l; echo "$fcron_command") | fcrontab -
+
+crontab=$(fcrontab -l)
+
 
 echo 'Content-type: text/html'
 echo ''
@@ -36,14 +41,26 @@ cat << EOF
 $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
 echo "</section>"
-fcron_command="$minute $hour $day_of_month $month $day_of_week $command"
-(fcrontab -l; echo "$fcron_command") | fcrontab -
-
-crontab=$(fcrontab -l)
-
 echo '<div class="wrapper">'
 echo '  <div class="user_tool">'
+echo '  <div class="cron_line">'
 echo '    <form action="./add_cron.sh" method="post">'
+echo "        <i>Minute: </i>"
+echo "        <input type='text' name='minute' placeholder='*' value='*'/>"
+echo "        <i>Hour: </i>"
+echo "        <input type='text' name='hour' placeholder='*'  value='*'/>"
+echo "        <i>Day of month: </i>"
+echo "        <input type='text' name='day_of_month' placeholder='*' value='*'/>"
+echo "        <i>Month: </i>"
+echo "        <input type='text' name='month' placeholder='*' value='*'/>"
+echo "        <i>Day of week: </i>"
+echo "        <input type='text' name='day_of_week' placeholder='*'  value='*'/>"
+echo "        <input class='command' type='text' name='command' placeholder='Command'/>"
+echo "        <button type='submit'>Add task</button>"
+echo "     </form>"
+echo "  </div>"
+echo '  <div class="cron_line">'
+echo '    <form action="./remove_cron.sh" method="post">'
 echo "<i>Minute: </i>"
 echo "<input type='text' name='minute' placeholder='*' value='*'/>"
 echo "<i>Hour: </i>"
@@ -51,12 +68,13 @@ echo "<input type='text' name='hour' placeholder='*'  value='*'/>"
 echo "<i>Day of month: </i>"
 echo "<input type='text' name='day_of_month' placeholder='*' value='*'/>"
 echo "<i>Month: </i>"
-echo "<input type='ntext' name='month' placeholder='*' value='*'/>"
+echo "<input type='text' name='month' placeholder='*' value='*'/>"
 echo "<i>Day of week: </i>"
 echo "<input type='text' name='day_of_week' placeholder='*'  value='*'/>"
 echo "<input class='command' type='text' name='command' placeholder='Command'/>"
-echo "<button type='submit''>Add task</button>"
+echo "<button type='submit'>Remove task</button>"
 echo "</form>"
+echo "</div>"
 echo '  </div>'
 echo '  <div class="table">'
 echo "    <div class='user_list'>"

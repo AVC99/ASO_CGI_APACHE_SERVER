@@ -1,7 +1,24 @@
 #!/bin/bash
 
 who=$(head -n 1 user.log)
-logger -t "WEBASO" "User: $who has accessed cron management"
+logger -t "WEBASO" "User: $who has removed a cron task"
+
+read -r query_string
+
+minute=$(echo "$query_string" | awk -F'&' '{split($1,a,"="); print a[2]}')
+hour=$(echo "$query_string" | awk -F'&' '{split($2,a,"="); print a[2]}')
+day_of_month=$(echo "$query_string" | awk -F'&' '{split($3,a,"="); print a[2]}')
+month=$(echo "$query_string" | awk -F'&' '{split($4,a,"="); print a[2]}')
+day_of_week=$(echo "$query_string" | awk -F'&' '{split($5,a,"="); print a[2]}')
+command=$(echo "$query_string" | awk -F'&' '{split($6,a,"="); print a[2]}')
+
+command=$(echo "$command" | sed 's/+/ /g')
+
+fcron_command="$minute $hour $day_of_month $month $day_of_week $command"
+
+new_fcrontab=$(fcrontab -l | grep -v "$command")
+
+echo "$new_fcrontab" | fcrontab -
 
 crontab=$(fcrontab -l)
 
@@ -62,7 +79,8 @@ echo "</div>"
 echo '  </div>'
 echo '  <div class="table">'
 echo "    <div class='user_list'>"
-echo "      <pre>$crontab</pre>"
+echo "      <pre>CRONTAB: $crontab</pre>"
+echo "    <pre>FCRON COMMAND: $fcron_command</pre>"
 echo "    </div>"
 echo '  </div>'
 echo "</div>"

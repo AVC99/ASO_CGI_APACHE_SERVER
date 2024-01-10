@@ -110,6 +110,7 @@ section {
   font-size: 1.5em;
   font-weight: 500;
   max-height: 80vh;
+  overflow-y: scroll !important;
 }
 .monitoring_item_wrapper {
   display: flex;

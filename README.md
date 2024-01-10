@@ -24,7 +24,7 @@ We installed some additional packages following https://www.linuxfromscratch.org
  - [X] MONITORING
  - [X] SHUTDOWN AND RESTART
  - [X] LOGS
- - [X] USER MANAGEMENT
+ - [X] USER MANAGEMENTtie
  - [X] PACKET FILTERING
  - [X] CRON MANAGEMENT
  - [/] AUTOMOUNT AND MUSIC SEARCH (autofs installed but not configured (has not been tested yet))
