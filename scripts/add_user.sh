@@ -8,6 +8,8 @@ logger -t "WEBASO" "User: $who has added user: $user"
 
 sudo useradd "$user"
 
+users=$(cat /etc/passwd | cut -d: -f1)
+
 #RETURNING TO THE PROCESS MANAGEMENT PAGE
 echo 'Content-type: text/html'
 echo ''
@@ -28,7 +30,6 @@ cat << EOF
 $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
 echo "</section>"
-users=$(cat /etc/passwd | cut -d: -f1)
 echo '<div class="wrapper">'
 echo '  <div class="user_tool">'
 echo '    <form action="./add_user.sh" method="post">'

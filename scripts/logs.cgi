@@ -3,6 +3,8 @@
 who=$(head -n 1 user.log)
 logger -t "WEBASO" "User: $who has accessed logs"
 
+
+user_log=$(awk '/WEBASO/' /var/log/sys.log)
 echo 'Content-type: text/html'
 echo ''
 echo '<html>'
@@ -14,7 +16,6 @@ echo '<link rel="icon" href="../icons/Hasbulla.png" type="image/png">'
 echo '</head>'
 
 echo '<body>'
-
 echo "<header><form class='form_button'  action='home.cgi' method='post'><button type='submit' name='user' value='$who'>Home</button></form>
 <p class='title'>logs</p>
 </header>"
@@ -24,12 +25,8 @@ $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
 echo "</section>"
 echo '<div class="wrapper">'
-user_log=$(awk '/WEBASO/' /var/log/sys.log)
 echo '    <div class="logs">'
-echo "    $user_log"
-echo "    </div>"
-echo "    <div class='syslog'>"
-echo "    $(sudo cat /var/log/auth.log | awk '/sudo/ || /sshd/ {print $0"<br>"}')"
+echo "    <pre>$user_log</pre>"
 echo "    </div>"
 echo "</div>"
 echo '</body>'

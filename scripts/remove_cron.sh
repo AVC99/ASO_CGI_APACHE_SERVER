@@ -16,7 +16,7 @@ command=$(echo "$command" | sed 's/+/ /g')
 
 fcron_command="$minute $hour $day_of_month $month $day_of_week $command"
 
-new_fcrontab=$(fcrontab -l | grep -v "$command")
+new_fcrontab=$(fcrontab -l | grep  "$fcron_command")
 
 echo "$new_fcrontab" | fcrontab -
 
@@ -79,8 +79,7 @@ echo "</div>"
 echo '  </div>'
 echo '  <div class="table">'
 echo "    <div class='user_list'>"
-echo "      <pre>CRONTAB: $crontab</pre>"
-echo "    <pre>FCRON COMMAND: $fcron_command</pre>"
+echo "      <pre> $crontab</pre>"
 echo "    </div>"
 echo '  </div>'
 echo "</div>"
