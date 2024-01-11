@@ -83,15 +83,6 @@ echo '  </div>'
 echo '  <div class="table">'
 echo "    <div class='user_list'>"
 echo "      <pre> $crontab</pre>"
-echo " <pre>Query: $query_string</pre>"
-echo " <pre>Min $minute </pre>"
-echo " <pre>h $hour </pre>"
-echo " <pre>Day $day_of_month</pre>"
-echo " <pre>month $month</pre>"
-echo " <pre>Dow $day_of_week </pre>"
-echo " <pre>Com $command </pre>"
-echo " <pre> $fcron_command </pre>"
-
 echo "    </div>"
 echo '  </div>'
 echo "</div>"

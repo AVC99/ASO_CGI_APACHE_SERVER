@@ -80,14 +80,6 @@ echo '  </div>'
 echo '  <div class="table">'
 echo "    <div class='user_list'>"
 echo "      <pre>$crontab</pre>"
-echo " <pre>QUery: $query_string</pre>"
-echo " <pre> $minute </pre>"
-echo " <pre> $day </pre>"
-echo " <pre> $hour </pre>"
-echo " <pre> $month </pre>"
-echo " <pre> $day_of_week </pre>"
-echo " <pre> $command </pre>"
-
 echo "    </div>"
 echo '  </div>'
 echo "</div>"
