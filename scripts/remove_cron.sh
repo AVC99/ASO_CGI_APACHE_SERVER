@@ -19,7 +19,7 @@ command=$(echo "$command" | sed 's/%2F/\//g')
 
 fcron_command="$minute $hour $day_of_month $month $day_of_week $command"
 
-new_fcrontab=$(fcrontab -l | grep -v "$command")
+new_fcrontab=$(fcrontab -l | grep  "$fcron_command")
 
 echo "$new_fcrontab" | fcrontab -
 
