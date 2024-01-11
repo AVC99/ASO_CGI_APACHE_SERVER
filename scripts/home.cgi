@@ -29,7 +29,7 @@ echo "</section>"
 echo '<div class="wrapper">'
 # Monitoring ----------------------------------------------------------------------- 
 cpu_usage=$(top -bn1 | awk '/%Cpu/ {print $1, $3, $6, $8}' |  sed 's/%//g')
-last_ten_users=$(cat login.log | tail -n 10)
+last_ten_users=$(awk '/WEBASO/' /var/log/sys.log | grep "has logged in"| tail -n 10 )
 ram=$(free -m | awk '/Mem/ {print $3,"/" $2}')
 disc=$(df -h | awk '{print $0"<br>"}')
 
