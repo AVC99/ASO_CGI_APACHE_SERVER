@@ -14,6 +14,7 @@ day_of_week=$(echo "$query_string" | awk -F'&' '{split($5,a,"="); print a[2]}')
 command=$(echo "$query_string" | awk -F'&' '{split($6,a,"="); print a[2]}')
 
 command=$(echo "$command" | sed 's/+/ /g')
+command=$(echo "$command" | sed 's/%2F/\//g')
 
 fcron_command="$minute $hour $day_of_month $month $day_of_week $command"
 (fcrontab -l; echo "$fcron_command") | fcrontab -
@@ -79,6 +80,14 @@ echo '  </div>'
 echo '  <div class="table">'
 echo "    <div class='user_list'>"
 echo "      <pre>$crontab</pre>"
+echo " <pre>QUery: $query_string</pre>"
+echo " <pre> $minute </pre>"
+echo " <pre> $day </pre>"
+echo " <pre> $hour </pre>"
+echo " <pre> $month </pre>"
+echo " <pre> $day_of_week </pre>"
+echo " <pre> $command </pre>"
+
 echo "    </div>"
 echo '  </div>'
 echo "</div>"

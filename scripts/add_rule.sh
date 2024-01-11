@@ -35,7 +35,6 @@ cat << EOF
 $(for i in {1..300}; do echo "<span></span> "; done)
 EOF
 echo "</section>"
-iptables=$(sudo iptables -L -n -v)
 echo '<div class="wrapper">'
 echo '  <div class="user_tool">'
 echo '    <form action="./add_rule.sh" method="post">'
@@ -72,19 +71,17 @@ if [ -z "$chain" ] || [ -z "$traffic_type" ] || [ -z "$action" ]; then
   echo "    </div>"
 else 
     # Add the rule
-    iptables_rule="iptables -A $chain -p $traffic_type"
+    iptables_rule="iptables -A $chain -p $traffic_type -j $action"
     # Optional fields
     [ -n "$source_addr" ] && iptables_rule+=" -s $source_addr"
     [ -n "$source_port" ] && iptables_rule+=" --sport $source_port"
     [ -n "$destination_addr" ] && iptables_rule+=" -d $destination_addr"
     [ -n "$destination_port" ] && iptables_rule+=" --dport $destination_port"
 
-eval "$iptables_rule"
+sudo eval "$iptables_rule"
 iptables=$(sudo iptables -L -n -v)
-
 echo "    <div class='user_list'>"
 echo "      <pre>$iptables</pre>"
-#echo "<h1>Complete iptable: $iptables_rule</h1>"
 echo "    </div>"
 fi
 echo "</div>"

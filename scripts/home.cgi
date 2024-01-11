@@ -32,7 +32,7 @@ cpu_usage=$(top -bn1 | awk '/%Cpu/ {print $1, $3, $6, $8}' |  sed 's/%//g')
 last_ten_users=$(awk '/WEBASO/' /var/log/sys.log | grep "has logged in"| tail -n 10 )
 ram=$(free -m | awk '/Mem/ {print $3,"/" $2}')
 disc=$(df -h | awk '{print $0"<br>"}')
-
+uptime=$(uptime)
 echo '  <div class="monitoring">'
 echo '    <p>Monitoring</p>'
 echo '    <div class="monitoring_wrapper">'
@@ -40,6 +40,7 @@ echo '       <div class="monitoring_item_wrapper">'
 echo '          <div class="monitoring_item">'
 echo "                  Overall CPU Usage $cpu_usage"
 echo '          </div>'
+echo "     <div class='monitoring_item'>$uptime</div>"
 echo "          <div class="monitoring_item">RAM: $ram Gb </div>"
 echo -e "          <div class='monitoring_item'>$disc</div>"
 echo '          <div class="monitoring_item">Last 10 Users:</div>'
